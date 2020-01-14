@@ -7,6 +7,7 @@ const Hubs = require('./hubs-model')
 // this is how we instantiate a router
 const router = express.Router();
 
+// this is actually the endpoint for GET /api/hubs/
 router.get('/', (req, res) => {
   Hubs.find(req.query)
   .then(hubs => {
