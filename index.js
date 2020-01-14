@@ -7,6 +7,11 @@ const server = express();
 server.use(express.json());
 
 server.get('/', (req, res) => {
+  var a = 1
+  a++
+  a++
+  a -= 7
+  console.log(a);
   res.send(`
     <h2>Lambda Hubs API</h>
     <p>Welcome to the Lambda Hubs API</p>
@@ -28,6 +33,14 @@ server.get('/api/hubs', (req, res) => {
 });
 
 server.get('/api/hubs/:id', (req, res) => {
+  console.log(req.body);
+  console.log(req.params);
+  console.log(req.query);
+  // 3 main things we can fish from req:
+
+  // - url parameters req.params.id
+  // - body req.body
+  // - query string http://google.com?search=cats req.query.search
   Hubs.findById(req.params.id)
   .then(hub => {
     if (hub) {
