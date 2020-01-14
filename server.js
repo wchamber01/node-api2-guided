@@ -1,11 +1,12 @@
 const express = require('express');
 
 const Hubs = require('./hubs/hubs-model.js');
+const hubsRouter = require('./hubs/hubs-router');
 
 const server = express();
 
 server.use(express.json());  // req body
-// cors
+server.use(hubsRouter);
 
 server.get('/', (req, res) => {
   var a = 1
